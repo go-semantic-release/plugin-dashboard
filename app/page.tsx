@@ -9,43 +9,58 @@ import {
   Tooltip,
 } from "@radix-ui/themes";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
-import style from "./page.module.css";
+import Link from "next/link";
 
-function TestComponent({ id }: { id: string }) {
+import style from "./page.module.css";
+import { Search } from "./search";
+import { getAllPlugins } from "./lib/registry";
+
+function PluginCard({ name }: { name: string }) {
   return (
     <Box className={style.card}>
-      <Card>
-        <Grid columns="2">
-          <Flex>
-            <Heading as="h2" size="4">
-              my-cool-plugin-{id}
-            </Heading>
-          </Flex>
-          <Flex direction="row" gap="3" justify="end">
-            <Tooltip content="This is an official go-semantic-release plugin.">
-              <Badge color="cyan">
-                <CheckCircledIcon />
-                official
-              </Badge>
-            </Tooltip>
-            <Badge color="green">v1.2.3</Badge>
-          </Flex>
-        </Grid>
-
-        <Text size="2" className={style.tcText}>
-          A plugin for go-semantic-release
-        </Text>
+      <Card asChild>
+        <Link href={`/plugins/${name}`}>
+          <Grid columns="2">
+            <Flex>
+              <Heading as="h2" size="4">
+                {name}
+              </Heading>
+            </Flex>
+            <Flex direction="row" gap="3" justify="end" height="max-content">
+              <Tooltip content="This is an official go-semantic-release plugin.">
+                <Badge color="cyan">
+                  <CheckCircledIcon />
+                  official
+                </Badge>
+              </Tooltip>
+              <Badge color="green">latest: v1.2.3</Badge>
+            </Flex>
+          </Grid>
+          <Text size="2" className={style.tcText}>
+            A plugin for go-semantic-release
+          </Text>
+        </Link>
       </Card>
     </Box>
   );
 }
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { s: string | undefined };
+}) {
+  const plugins = await getAllPlugins();
+  const filteredPlugins = plugins.filter(
+    (p) =>
+      searchParams.s === undefined || p.includes(searchParams.s.toLowerCase()),
+  );
   return (
     <>
+      <Search />
       <Flex direction="row" gap="4" wrap="wrap" justify="center" align="start">
-        {[...Array(11)].map((_, i) => (
-          <TestComponent id={i.toString()} key={i} />
+        {filteredPlugins.map((p) => (
+          <PluginCard key={p} name={p} />
         ))}
       </Flex>
     </>
