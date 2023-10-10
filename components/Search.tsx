@@ -1,8 +1,8 @@
 "use client";
 import { Flex, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import style from "./Search.module.css";
 import { useRouter } from "next/navigation";
+import style from "./Search.module.css";
 
 export function Search() {
   const router = useRouter();

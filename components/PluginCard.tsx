@@ -11,7 +11,7 @@ import {
 import { formatDistanceToNow } from "date-fns";
 
 import style from "./PluginCard.module.css";
-import { getPlugin } from "../lib/registry";
+import { getPlugin } from "@/lib/registry";
 
 export async function PluginCard({ name }: { name: string }) {
   const plugin = await getPlugin(name);

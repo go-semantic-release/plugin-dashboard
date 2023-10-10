@@ -8,7 +8,7 @@ import style from "./layout.module.css";
 
 export const metadata: Metadata = {
   title: "go-semantic-release plugins",
-  description: "Browse plugins available for go-semantic-release",
+  description: "Browse plugins available for go-semantic-release.",
 };
 
 export default function RootLayout({

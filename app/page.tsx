@@ -1,7 +1,7 @@
 import { Flex } from "@radix-ui/themes";
-import { getAllPlugins } from "./lib/registry";
-import { Search } from "./components/Search";
-import { PluginCard } from "./components/PluginCard";
+import { getAllPlugins } from "@/lib/registry";
+import { Search } from "@/components/Search";
+import { PluginCard } from "@/components/PluginCard";
 
 export default async function Home({
   searchParams,
