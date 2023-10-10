@@ -8,10 +8,10 @@ import {
   Text,
   Tooltip,
 } from "@radix-ui/themes";
+import { formatDistanceToNow } from "date-fns";
+
 import style from "./PluginCard.module.css";
-import Link from "next/link";
-import { CheckCircledIcon } from "@radix-ui/react-icons";
-import { getPlugin } from "@/app/lib/registry";
+import { getPlugin } from "../lib/registry";
 
 export async function PluginCard({ name }: { name: string }) {
   const plugin = await getPlugin(name);
@@ -29,14 +29,10 @@ export async function PluginCard({ name }: { name: string }) {
               </Heading>
             </Flex>
             <Flex direction="row" gap="3" justify="end" height="max-content">
-              <Tooltip content="This is an official go-semantic-release plugin.">
-                <Badge color="cyan">
-                  <CheckCircledIcon />
-                  official
-                </Badge>
-              </Tooltip>
               <Tooltip
-                content={`This is the latest release of the plugin and was published ${plugin.LatestRelease.CreatedAt}.`}
+                content={`Published ${formatDistanceToNow(
+                  new Date(plugin.LatestRelease.CreatedAt),
+                )} ago.`}
               >
                 <Badge color="green">v{plugin.LatestRelease.Version}</Badge>
               </Tooltip>

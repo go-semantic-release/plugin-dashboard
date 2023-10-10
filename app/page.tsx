@@ -9,6 +9,7 @@ export default async function Home({
   searchParams: { s: string | undefined };
 }) {
   const plugins = await getAllPlugins();
+  plugins.sort((a, b) => a.localeCompare(b));
   const filteredPlugins = plugins.filter(
     (p) =>
       searchParams.s === undefined || p.includes(searchParams.s.toLowerCase()),
