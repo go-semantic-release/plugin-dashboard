@@ -1,7 +1,7 @@
 "use client";
 import { Flex, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import style from "./search.module.css";
+import style from "./Search.module.css";
 import { useRouter } from "next/navigation";
 
 export function Search() {
@@ -13,6 +13,7 @@ export function Search() {
           <MagnifyingGlassIcon height="16" width="16" />
         </TextField.Slot>
         <TextField.Input
+          autoFocus
           placeholder="Search the plugins…"
           onChange={(e) =>
             router.push(e.target.value ? `/?s=${e.target.value}` : "/")

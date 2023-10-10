@@ -1,8 +1,10 @@
 import "@radix-ui/themes/styles.css";
+
 import type { Metadata } from "next";
-import { Container, Heading, Theme, Link as RadixLink } from "@radix-ui/themes";
-import style from "@/app/page.module.css";
 import Link from "next/link";
+import { Container, Heading, Theme, Link as RadixLink } from "@radix-ui/themes";
+
+import style from "./layout.module.css";
 
 export const metadata: Metadata = {
   title: "go-semantic-release plugins",
