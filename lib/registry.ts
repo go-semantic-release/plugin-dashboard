@@ -1,5 +1,6 @@
 "use server";
-export async function getAllPlugins(): Promise<string[]> {
+
+export async function getPluginNames(): Promise<string[]> {
   const res = await fetch(
     "https://registry.go-semantic-release.xyz/api/v2/plugins",
   );
@@ -35,4 +36,15 @@ export async function getPlugin(name: string): Promise<Plugin | null> {
     return null;
   }
   return await res.json();
+}
+
+export async function getAllPlugins(): Promise<Plugin[]> {
+  const pluginsNames = await getPluginNames();
+  const plugins: Plugin[] = [];
+  for (const name of pluginsNames) {
+    const plugin = await getPlugin(name);
+    if (!plugin) continue;
+    plugins.push(plugin);
+  }
+  return plugins;
 }

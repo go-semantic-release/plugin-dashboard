@@ -1,27 +1,9 @@
-import { Flex } from "@radix-ui/themes";
+"use server";
 import { getAllPlugins } from "@/lib/registry";
-import { Search } from "@/components/Search";
-import { PluginCard } from "@/components/PluginCard";
+import { PluginOverview } from "@/app/client";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: { s: string | undefined };
-}) {
+export default async function Home() {
   const plugins = await getAllPlugins();
-  plugins.sort((a, b) => a.localeCompare(b));
-  const filteredPlugins = plugins.filter(
-    (p) =>
-      searchParams.s === undefined || p.includes(searchParams.s.toLowerCase()),
-  );
-  return (
-    <>
-      <Search />
-      <Flex direction="row" gap="4" wrap="wrap" justify="center" align="start">
-        {filteredPlugins.map((p) => (
-          <PluginCard key={p} name={p} />
-        ))}
-      </Flex>
-    </>
-  );
+  plugins.sort((a, b) => a.FullName.localeCompare(b.FullName));
+  return <PluginOverview plugins={plugins} />;
 }

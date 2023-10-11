@@ -1,3 +1,4 @@
+"use client";
 import {
   Badge,
   Box,
@@ -11,13 +12,9 @@ import {
 import { formatDistanceToNow } from "date-fns";
 
 import style from "./PluginCard.module.css";
-import { getPlugin } from "@/lib/registry";
+import type { Plugin } from "@/lib/registry";
 
-export async function PluginCard({ name }: { name: string }) {
-  const plugin = await getPlugin(name);
-  if (!plugin) {
-    return null;
-  }
+export function PluginCard({ plugin }: { plugin: Plugin }) {
   return (
     <Box className={style.card}>
       <Card asChild>
@@ -25,7 +22,7 @@ export async function PluginCard({ name }: { name: string }) {
           <Grid columns="2">
             <Flex>
               <Heading as="h2" size="4">
-                {name}
+                {plugin.FullName}
               </Heading>
             </Flex>
             <Flex direction="row" gap="3" justify="end" height="max-content">
