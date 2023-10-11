@@ -4,12 +4,13 @@ import { useSearchParams } from "next/navigation";
 import style from "./Search.module.css";
 import { useEffect, useState } from "react";
 
-export function Search({ onSearch }: { onSearch: (s: string) => void }) {
-  const searchParams = useSearchParams();
-  const [search, setSearch] = useState(searchParams.get("s") || "");
-  useEffect(() => {
-    onSearch(search);
-  }, [search, onSearch]);
+export function Search({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (s: string) => void;
+}) {
   return (
     <Flex justify="center" m="6">
       <TextField.Root className={style.search}>
@@ -19,8 +20,8 @@ export function Search({ onSearch }: { onSearch: (s: string) => void }) {
         <TextField.Input
           autoFocus
           placeholder="Search the plugins…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
         />
       </TextField.Root>
     </Flex>
