@@ -5,3 +5,7 @@
 .heading > a:hover {
   text-decoration: none;
 }
+
+.loading {
+  height: 50vh;
+}
