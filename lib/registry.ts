@@ -1,4 +1,4 @@
-"use server";
+import "server-only";
 
 export async function getPluginNames(): Promise<string[]> {
   const res = await fetch(
@@ -15,6 +15,7 @@ export interface Plugin {
   Type: string;
   Name: string;
   URL: string;
+  Description: string;
   LatestRelease: Release;
   Versions: string[];
   UpdatedAt: string;

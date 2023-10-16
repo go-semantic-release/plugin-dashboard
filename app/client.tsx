@@ -12,9 +12,13 @@ export function PluginOverview({ plugins }: { plugins: Plugin[] }) {
   const [search, setSearch] = useState(searchParams.get("s") || "");
   const [filteredPlugins, setFilteredPlugins] = useState(plugins);
   useEffect(() => {
+    const s = search.trim().toLowerCase();
     setFilteredPlugins(
       plugins.filter(
-        (p) => !search || p.FullName.includes(search.toLowerCase()),
+        (p) =>
+          !s ||
+          p.FullName.includes(s) ||
+          p.Description.toLowerCase().includes(s),
       ),
     );
   }, [search, plugins]);

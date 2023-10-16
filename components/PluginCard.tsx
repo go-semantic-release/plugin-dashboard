@@ -36,7 +36,7 @@ export function PluginCard({ plugin }: { plugin: Plugin }) {
               </Tooltip>
             </Flex>
           </Grid>
-          <Text size="2">A plugin for go-semantic-release</Text>
+          <Text size="2">{plugin.Description}</Text>
         </a>
       </Card>
     </Box>
