@@ -11,8 +11,9 @@ import {
 } from "@radix-ui/themes";
 import { formatDistanceToNow } from "date-fns";
 
-import style from "./PluginCard.module.css";
 import type { Plugin } from "@/lib/registry";
+
+import style from "./PluginCard.module.css";
 
 export function PluginCard({ plugin }: { plugin: Plugin }) {
   return (

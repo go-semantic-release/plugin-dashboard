@@ -5,6 +5,9 @@ const nextConfig = {
     typedRoutes: true,
     serverActions: true,
   },
+  env: {
+    VERSION: process.env.VERSION || "0.0.0-dev",
+  },
 };
 
 module.exports = nextConfig;

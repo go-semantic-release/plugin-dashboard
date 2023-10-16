@@ -1,15 +1,14 @@
-import { Flex, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { useSearchParams } from "next/navigation";
+import { Flex, TextField } from "@radix-ui/themes";
+
 import style from "./Search.module.css";
-import { useEffect, useState } from "react";
 
 export function Search({
   value,
   onChange,
 }: {
   value: string;
-  onChange: (s: string) => void;
+  onChange: (_: string) => void;
 }) {
   return (
     <Flex justify="center" m="6">

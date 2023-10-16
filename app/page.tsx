@@ -1,6 +1,6 @@
 "use server";
-import { getAllPlugins } from "@/lib/registry";
 import { PluginOverview } from "@/app/client";
+import { getAllPlugins } from "@/lib/registry";
 
 export default async function Home() {
   const plugins = await getAllPlugins();

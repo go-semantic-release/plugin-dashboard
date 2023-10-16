@@ -1,11 +1,11 @@
 "use client";
 import { Flex } from "@radix-ui/themes";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import type { Plugin } from "@/lib/registry";
-import { Search } from "@/components/Search";
 import { PluginCard } from "@/components/PluginCard";
-import { useSearchParams } from "next/navigation";
+import { Search } from "@/components/Search";
+import type { Plugin } from "@/lib/registry";
 
 export function PluginOverview({ plugins }: { plugins: Plugin[] }) {
   const searchParams = useSearchParams();

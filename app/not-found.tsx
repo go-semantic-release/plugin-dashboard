@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { Flex, Heading } from "@radix-ui/themes";
+import Link from "next/link";
+
 export default function NotFound() {
   return (
     <Flex align="center" direction="column" my="9">

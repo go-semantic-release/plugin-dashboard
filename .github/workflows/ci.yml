@@ -28,9 +28,18 @@ jobs:
       - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
+      - uses: go-semantic-release/action@v1
+        id: semrel
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: vercel pull
+        if: steps.semrel.outputs.version != ''
         run: bunx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: vercel build
+        if: steps.semrel.outputs.version != ''
         run: bunx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERSION: ${{ steps.semrel.outputs.version }}
       - name: vercel deploy
+        if: steps.semrel.outputs.version != ''
         run: bunx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
