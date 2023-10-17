@@ -1,4 +1,3 @@
-"use client";
 import {
   Badge,
   Box,
@@ -10,12 +9,17 @@ import {
   Tooltip,
 } from "@radix-ui/themes";
 import { formatDistanceToNow } from "date-fns";
+import { memo } from "react";
 
 import type { Plugin } from "@/lib/registry";
 
 import style from "./PluginCard.module.css";
 
-export function PluginCard({ plugin }: { plugin: Plugin }) {
+export const PluginCard = memo(function PluginCard({
+  plugin,
+}: {
+  plugin: Plugin;
+}) {
   return (
     <Box className={style.card}>
       <Card asChild>
@@ -41,4 +45,4 @@ export function PluginCard({ plugin }: { plugin: Plugin }) {
       </Card>
     </Box>
   );
-}
+});
