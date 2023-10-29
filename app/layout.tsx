@@ -7,7 +7,7 @@ import {
   Link as RadixLink,
   Theme,
 } from "@radix-ui/themes";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 
 import style from "./layout.module.css";
@@ -15,7 +15,12 @@ import style from "./layout.module.css";
 export const metadata: Metadata = {
   title: "go-semantic-release plugins",
   description: "Browse plugins available for go-semantic-release.",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
