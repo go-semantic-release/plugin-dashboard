@@ -12,8 +12,11 @@ import { formatDistanceToNow } from "date-fns";
 import { memo } from "react";
 
 import type { Plugin } from "@/lib/registry";
+import { css } from "@/styled-system/css";
 
-import style from "./PluginCard.module.css";
+const cardStyle = css({
+  width: "400px",
+});
 
 export const PluginCard = memo(function PluginCard({
   plugin,
@@ -21,7 +24,7 @@ export const PluginCard = memo(function PluginCard({
   plugin: Plugin;
 }) {
   return (
-    <Box className={style.card}>
+    <Box className={cardStyle}>
       <Card asChild>
         <a href={plugin.URL} rel="noopener noreferrer" target="_blank">
           <Grid columns="2">

@@ -1,7 +1,15 @@
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Flex, TextField } from "@radix-ui/themes";
 
-import style from "./Search.module.css";
+import { css } from "@/styled-system/css";
+
+const searchStyle = css({
+  width: {
+    base: "100vw",
+    sm: "50vw",
+    lg: "30vw",
+  },
+});
 
 export function Search({
   value,
@@ -12,7 +20,7 @@ export function Search({
 }) {
   return (
     <Flex justify="center" m="6">
-      <TextField.Root className={style.search}>
+      <TextField.Root className={searchStyle}>
         <TextField.Slot>
           <MagnifyingGlassIcon height="16" width="16" />
         </TextField.Slot>

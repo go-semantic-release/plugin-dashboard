@@ -1,3 +1,4 @@
+import "./globals.css";
 import "@radix-ui/themes/styles.css";
 
 import {
@@ -10,7 +11,16 @@ import {
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 
-import style from "./layout.module.css";
+import { css } from "@/styled-system/css";
+
+const heading = css({
+  textAlign: "center",
+});
+const link = css({
+  _hover: {
+    textDecoration: "none !important",
+  },
+});
 
 export const metadata: Metadata = {
   title: "go-semantic-release plugins",
@@ -32,7 +42,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body>
         <Theme appearance="dark">
-          <Flex direction="row" justify="end" px="2">
+          <Flex direction="row" justify="end" px="2" pt="2">
             <RadixLink
               href={`https://github.com/go-semantic-release/plugin-dashboard/releases/tag/v${process.env.VERSION}`}
               rel="noopener noreferrer"
@@ -43,9 +53,11 @@ export default function RootLayout({
             </RadixLink>
           </Flex>
           <Container>
-            <Heading size="8" className={style.heading}>
+            <Heading size="8" className={heading}>
               <Link href="/" passHref legacyBehavior>
-                <RadixLink>go-semantic-release plugins</RadixLink>
+                <RadixLink className={link}>
+                  go-semantic-release plugins
+                </RadixLink>
               </Link>
             </Heading>
             {children}

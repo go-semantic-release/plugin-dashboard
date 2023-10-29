@@ -4,3 +4,4 @@ node_modules/
 .idea/
 *.tsbuildinfo
 next-env.d.ts
+styled-system/
